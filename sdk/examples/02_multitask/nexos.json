@@ -1,0 +1,9 @@
+{
+    "name": "multitask",
+    "version": "1.0.0",
+    "author": "NexOS Team",
+    "description": "Preemptive Multitasking & Message Queue IPC demonstration",
+    "required_capabilities": ["TIMER"],
+    "source_files": ["main.c"],
+    "profiles": ["standard", "advanced"]
+}

@@ -1,0 +1,17 @@
+{
+    "platform": "esp32c6",
+    "vendor": "Espressif Systems",
+    "chip_family": "ESP32-C6",
+    "core": "RISC-V 32-bit Single-Core (RV32IMAC)",
+    "flash_voltage": "3.3V",
+    "sram_segments": [
+        { "name": "HP_SRAM", "start": "0x40800000", "size": "0x00080000" },
+        { "name": "LP_SRAM", "start": "0x50000000", "size": "0x00004000" }
+    ],
+    "hal_sources": [
+        "esp32c6_hal_gpio.c",
+        "esp32c6_hal_uart.c",
+        "esp32c6_hal_timer.c",
+        "esp32c6_boot.c"
+    ]
+}

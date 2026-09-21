@@ -1,0 +1,12 @@
+{
+    "platform": "host",
+    "vendor": "NexOS Simulation Ecosystem",
+    "chip_family": "x86_64 Host Simulator",
+    "core": "Host Native Process",
+    "hal_sources": [
+        "host_hal_gpio.c",
+        "host_hal_uart.c",
+        "host_hal_timer.c",
+        "host_boot.c"
+    ]
+}

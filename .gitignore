@@ -1,0 +1,87 @@
+# ==============================================================================
+# NexOS System-Wide .gitignore
+# Tailored for Micro-Kernel RTOS, SDK, Embedded Toolchains, and Developer Studio
+# ==============================================================================
+
+# --- Unused & Local Scratch Directories ---
+ไม่ใช้/
+unused/
+scratch/
+test/
+
+# --- Python Bytecode & Environments ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+dist/
+!platforms/**/build/
+!platforms/**/build/*
+!sdk/examples/**/build/
+!sdk/examples/**/build/*
+!dist_installer/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- C / C++ / Embedded Intermediates ---
+*.o
+*.obj
+*.d
+*.a
+*.lib
+*.i
+*.s
+
+# --- Local User Apps Created via CLI ---
+apps/*/build/
+apps/*/dist/
+
+# --- Installer Temporary Staging ---
+installer/staging/
+
+# --- IDE & Editor Metadata ---
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- OS-Specific Files ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# --- Temporary & Backup Files ---
+*.tmp
+*.bak
+*.swp
+*~
+*.log

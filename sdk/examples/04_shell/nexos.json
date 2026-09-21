@@ -1,0 +1,9 @@
+{
+    "name": "shell",
+    "version": "1.0.0",
+    "author": "NexOS Team",
+    "description": "Interactive System Console Shell demonstration",
+    "required_capabilities": ["UART"],
+    "source_files": ["main.c"],
+    "profiles": ["standard", "advanced"]
+}

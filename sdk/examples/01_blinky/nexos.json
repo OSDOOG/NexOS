@@ -1,0 +1,9 @@
+{
+    "name": "blinky",
+    "version": "1.0.0",
+    "author": "NexOS Team",
+    "description": "Universal LED Blinker demonstration",
+    "required_capabilities": ["GPIO"],
+    "source_files": ["main.c"],
+    "profiles": ["micro", "standard", "advanced"]
+}

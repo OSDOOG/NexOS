@@ -1,0 +1,19 @@
+{
+    "format": "NEX_PACKAGE_V1",
+    "extension": ".nex",
+    "magic_bytes": "4E4558504B473031",
+    "structure": {
+        "manifest.json": "Application description, target architecture, ABI version, permissions, capabilities",
+        "bin/": "Target binary or bytecode matching target architecture",
+        "res/": "Static resources, assets, fonts, icons",
+        "config/": "Runtime configuration and defaults",
+        "checksum.sha256": "SHA-256 hash of all components"
+    },
+    "abi_versions": {
+        "riscv32": "rv32imac-nexos-1.0",
+        "xtensa": "xtensa-nexos-1.0",
+        "arm": "armv6m-nexos-1.0",
+        "avr": "avr-nexos-1.0",
+        "host": "x86_64-nexos-1.0"
+    }
+}

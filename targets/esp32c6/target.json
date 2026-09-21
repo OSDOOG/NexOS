@@ -1,0 +1,50 @@
+{
+    "name": "esp32-c6",
+    "display_name": "Espressif ESP32-C6 (Reference Platform)",
+    "architecture": "riscv",
+    "cpu": "riscv32-imac",
+    "fpu": false,
+    "clock_mhz": 160,
+    "ram_bytes": 524288,
+    "flash_bytes": 4194304,
+    "profile": "advanced",
+    "toolchain": {
+        "prefix": "riscv-none-elf-",
+        "compiler": "riscv-none-elf-gcc",
+        "cflags": "-march=rv32imac -mabi=ilp32 -mcmodel=medany -O2 -ffunction-sections -fdata-sections -Wall",
+        "ldflags": "-T platforms/esp32c6/linker/esp32c6.ld -Wl,--gc-sections"
+    },
+    "output_format": "bin",
+    "flash_tool": "esptool.py",
+    "flash_args": "--chip esp32c6 --baud 460800 write-flash 0x0 {output_file}",
+    "capabilities": [
+        "GPIO",
+        "UART",
+        "SPI",
+        "I2C",
+        "PWM",
+        "ADC",
+        "TIMER",
+        "RTC",
+        "WIFI",
+        "BLE",
+        "ZIGBEE",
+        "THREAD",
+        "FLASH",
+        "CRYPTO_ACCEL",
+        "SECURE_BOOT",
+        "OTA",
+        "DEEP_SLEEP"
+    ],
+    "default_pins": {
+        "led": 15,
+        "uart_tx": 16,
+        "uart_rx": 17,
+        "i2c_sda": 6,
+        "i2c_scl": 7,
+        "spi_cs": 18,
+        "spi_mosi": 19,
+        "spi_miso": 20,
+        "spi_sclk": 21
+    }
+}

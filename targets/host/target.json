@@ -1,0 +1,44 @@
+{
+    "name": "host",
+    "display_name": "Host PC Native Simulator (Windows / Linux)",
+    "architecture": "host",
+    "cpu": "x86_64",
+    "fpu": true,
+    "clock_mhz": 3000,
+    "ram_bytes": 16777216,
+    "flash_bytes": 67108864,
+    "profile": "advanced",
+    "toolchain": {
+        "prefix": "",
+        "compiler": "gcc",
+        "cflags": "-O2 -Wall -I core/include -I hal/include -I arch/include -I sdk/include",
+        "ldflags": ""
+    },
+    "output_format": "exe",
+    "flash_tool": "builtin",
+    "flash_args": "{output_file}",
+    "capabilities": [
+        "GPIO",
+        "UART",
+        "SPI",
+        "I2C",
+        "PWM",
+        "ADC",
+        "DAC",
+        "TIMER",
+        "RTC",
+        "WIFI",
+        "FLASH",
+        "DISPLAY",
+        "SD",
+        "USB_DEVICE",
+        "OTA"
+    ],
+    "default_pins": {
+        "led": 1,
+        "uart_tx": 0,
+        "uart_rx": 1,
+        "i2c_sda": 2,
+        "i2c_scl": 3
+    }
+}

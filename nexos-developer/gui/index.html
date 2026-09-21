@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexOS Developer Studio v1.0.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">N</div>
+                <div class="brand-text">
+                    <span class="brand-name">NexOS</span>
+                    <span class="brand-sub">Developer Studio</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-tab="dashboard" id="btn-tab-dashboard">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor" d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+                    </svg>
+                    <span>Target Dashboard</span>
+                </button>
+                <button class="nav-btn" data-tab="monitor" id="btn-tab-monitor">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor"
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10z" />
+                    </svg>
+                    <span>Serial Monitor</span>
+                </button>
+                <button class="nav-btn" data-tab="doctor" id="btn-tab-doctor">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path fill="currentColor"
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+                    </svg>
+                    <span>NexOS Doctor</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="kernel-badge">NexOS v1.0.0</div>
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>Core Status: Healthy</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top App Bar -->
+            <header class="top-bar">
+
+                <div class="target-selector-group">
+                    <label for="select-target">Hardware Target:</label>
+                    <select id="select-target" class="custom-select target-highlight">
+                        <option value="esp32-c6" selected>ESP32-C6 (RISC-V 32-bit Ref Platform)</option>
+                        <option value="rp2040">RP2040 / Pico (ARM Cortex-M0+)</option>
+                        <option value="pico-w">Pico W (ARM + CYW43439)</option>
+                        <option value="esp8266">ESP8266 (Xtensa LX106)</option>
+                        <option value="esp32">ESP32 (Dual Xtensa LX6)</option>
+                        <option value="esp32-s3">ESP32-S3 (Dual Xtensa LX7)</option>
+                        <option value="arduino-avr">Arduino AVR (ATmega328P Micro)</option>
+                        <option value="stm32">STM32F4 (ARM Cortex-M4)</option>
+                        <option value="host">Host PC Simulator (x86_64)</option>
+                    </select>
+                </div>
+
+                <div class="device-connection-group">
+                    <div class="device-badge" id="device-badge">
+                        <span class="pulse-indicator offline" id="pulse-indicator"></span>
+                        <span id="device-status-text">No board connected</span>
+                    </div>
+                    <select id="select-port" class="custom-select port-select" title="Selected Serial COM Port">
+                        <option value="">No board connected</option>
+                    </select>
+                    <button class="btn-icon" id="btn-scan-ports" title="Rescan Ports">
+                        <svg viewBox="0 0 24 24" width="15" height="15">
+                            <path fill="currentColor"
+                                d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="btn-build">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M12 2l4 4-8 8-4-4 8-8zm7 7l3 3-9 9-3-3 9-9z" />
+                        </svg>
+                        <span>Build</span>
+                    </button>
+                    <button class="btn btn-flash-os" id="btn-flash">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M7 2v11h3v9l7-12h-4l4-8z" />
+                        </svg>
+                        <span>Flash OS</span>
+                    </button>
+                    <button class="btn btn-accent" id="btn-run-host">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M8 5v14l11-7z" />
+                        </svg>
+                        <span>Run on Host</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Tab 1: Target Dashboard -->
+            <section class="tab-panel active" id="panel-dashboard">
+                <div class="dashboard-grid">
+                    <!-- Target Card -->
+                    <div class="card target-specs-card">
+                        <div class="card-header">
+                            <h2 id="target-title">Espressif ESP32-C6 (Reference Platform)</h2>
+                            <span class="badge badge-profile" id="target-profile">NexOS Advanced</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="spec-row">
+                                <span class="spec-label">Architecture:</span>
+                                <span class="spec-val" id="spec-arch">RISC-V 32-bit (rv32imac)</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Clock Speed:</span>
+                                <span class="spec-val" id="spec-clock">160 MHz</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">SRAM Memory:</span>
+                                <span class="spec-val" id="spec-ram">512 KB</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Flash Memory:</span>
+                                <span class="spec-val" id="spec-flash">4,096 KB</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Output Binary:</span>
+                                <span class="spec-val" id="spec-format">.bin</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Compiler Toolchain:</span>
+                                <span class="spec-val" id="spec-compiler">riscv-none-elf-gcc</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Capability Bitmask Card -->
+                    <div class="card caps-card">
+                        <div class="card-header">
+                            <h2>Hardware Capabilities</h2>
+                            <span class="caps-counter" id="caps-count">17 Active</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="caps-tags" id="caps-container">
+                                <!-- Dynamic tags populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Hardware Board Detection Card -->
+                    <div class="card hardware-card">
+                        <div class="card-header">
+                            <h2>Detected Hardware Board</h2>
+                            <span class="badge badge-disconnected" id="hw-status-badge">Disconnected</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="spec-row">
+                                <span class="spec-label">Detected Chip:</span>
+                                <span class="spec-val text-muted" id="hw-chip">No board detected (Plug USB cable)</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Serial Port:</span>
+                                <span class="spec-val text-muted" id="hw-port">None</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Flash Memory:</span>
+                                <span class="spec-val text-muted" id="hw-flash">--</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Hardware Features:</span>
+                                <span class="spec-val text-muted" id="hw-features">--</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">MAC Address:</span>
+                                <span class="spec-val text-muted" id="hw-mac">--</span>
+                            </div>
+                            <div class="hw-action-box" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button class="btn btn-primary" id="btn-flash-board" style="flex: 2; min-width: 180px;"
+                                    disabled>
+                                    ⚡ Connect Board via USB to Flash
+                                </button>
+                                <button class="btn btn-secondary" id="btn-open-monitor" style="flex: 1;">
+                                    📺 Live Console
+                                </button>
+                                <button class="btn btn-sm" id="btn-erase-flash"
+                                    style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #EF4444; cursor: pointer; border-radius: 8px; padding: 6px 12px; font-weight: 600;"
+                                    title="Erase chip flash memory to stop boot loop">
+                                    🧹 Erase Flash
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Build Output Console -->
+                    <div class="card console-card full-width">
+                        <div class="card-header">
+                            <h2>Build & Diagnostics Console</h2>
+                            <button class="btn-clear" id="btn-clear-console">Clear</button>
+                        </div>
+                        <div class="card-body">
+                            <pre class="terminal-view"
+                                id="build-console">> Ready. Select target and click 'Build' or 'Run on Host' to start.</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 2: Serial Monitor (Live Hardware Console) -->
+            <section class="tab-panel" id="panel-monitor">
+                <div class="monitor-container">
+                    <div class="monitor-controls">
+                        <div class="monitor-left-controls">
+                            <span class="device-badge">
+                                <span class="pulse-indicator offline" id="serial-live-dot"></span>
+                                <span id="serial-live-status">Serial Disconnected</span>
+                            </span>
+                            <select id="serial-port-select" class="custom-select port-select"></select>
+                            <select id="serial-baud-select" class="custom-select port-select">
+                                <option value="115200" selected>115200 baud</option>
+                                <option value="9600">9600 baud</option>
+                                <option value="57600">57600 baud</option>
+                                <option value="230400">230400 baud</option>
+                                <option value="460800">460800 baud</option>
+                                <option value="921600">921600 baud</option>
+                            </select>
+                            <button class="btn btn-primary btn-sm" id="btn-toggle-serial">Connect</button>
+                        </div>
+                        <div class="monitor-right-controls">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="serial-autoscroll" checked> Auto-scroll
+                            </label>
+                            <button class="btn btn-secondary btn-sm" id="btn-clear-serial">Clear</button>
+                        </div>
+                    </div>
+                    <div class="terminal-view monitor-stream" id="serial-stream">
+                        <div class="stream-line system">[SYSTEM] Connecting to serial console...</div>
+                    </div>
+                    <div class="serial-input-group">
+                        <input type="text" id="serial-tx-input" class="custom-input"
+                            placeholder="Type command to send to board (e.g. help, info, test)...">
+                        <button class="btn btn-accent btn-sm" id="btn-send-serial">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 4: NexOS Doctor Diagnostics -->
+            <section class="tab-panel" id="panel-doctor">
+                <div class="doctor-container">
+                    <div class="doctor-header">
+                        <h2>System Environment Diagnostics</h2>
+                        <button class="btn btn-primary" id="btn-run-doctor">Run NexOS Doctor</button>
+                    </div>
+                    <pre class="terminal-view doctor-view"
+                        id="doctor-output">Click 'Run NexOS Doctor' to inspect toolchains, SDKs, and targets.</pre>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

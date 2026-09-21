@@ -1,0 +1,36 @@
+{
+    "name": "arduino-avr",
+    "display_name": "Arduino Uno / Nano (ATmega328P)",
+    "architecture": "avr",
+    "cpu": "atmega328p",
+    "fpu": false,
+    "clock_mhz": 16,
+    "ram_bytes": 2048,
+    "flash_bytes": 32768,
+    "profile": "micro",
+    "toolchain": {
+        "prefix": "avr-",
+        "compiler": "avr-gcc",
+        "cflags": "-mmcu=atmega328p -DF_CPU=16000000UL -Os -ffunction-sections -fdata-sections -Wall",
+        "ldflags": "-mmcu=atmega328p -Wl,--gc-sections"
+    },
+    "output_format": "hex",
+    "flash_tool": "avrdude",
+    "flash_args": "-c arduino -p m328p -b 115200 -U flash:w:{output_file}:i",
+    "capabilities": [
+        "GPIO",
+        "UART",
+        "SPI",
+        "I2C",
+        "PWM",
+        "ADC",
+        "TIMER"
+    ],
+    "default_pins": {
+        "led": 13,
+        "uart_tx": 1,
+        "uart_rx": 0,
+        "i2c_sda": 18,
+        "i2c_scl": 19
+    }
+}

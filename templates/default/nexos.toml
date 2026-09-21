@@ -1,0 +1,26 @@
+[app]
+name = "hello"
+version = "1.0.0"
+description = "NexOS Hello World Application"
+
+[target]
+architecture = "riscv32"
+chip = "esp32c6"
+
+[nexos]
+minimum_version = "0.1.0"
+abi_version = 1
+
+[memory]
+stack = 4096
+heap = 8192
+
+[permissions]
+gpio = false
+adc = false
+i2c = false
+spi = false
+uart = true
+display = true
+storage = false
+network = false

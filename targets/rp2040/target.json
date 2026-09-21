@@ -1,0 +1,39 @@
+{
+    "name": "rp2040",
+    "display_name": "Raspberry Pi RP2040 / Pico",
+    "architecture": "arm",
+    "cpu": "cortex-m0plus",
+    "fpu": false,
+    "clock_mhz": 133,
+    "ram_bytes": 270336,
+    "flash_bytes": 2097152,
+    "profile": "standard",
+    "toolchain": {
+        "prefix": "arm-none-eabi-",
+        "compiler": "arm-none-eabi-gcc",
+        "cflags": "-mcpu=cortex-m0plus -mthumb -O2 -ffunction-sections -fdata-sections -Wall",
+        "ldflags": "-T platforms/rp2040/linker/rp2040.ld -Wl,--gc-sections"
+    },
+    "output_format": "uf2",
+    "flash_tool": "picotool",
+    "flash_args": "load {output_file} -x",
+    "capabilities": [
+        "GPIO",
+        "UART",
+        "SPI",
+        "I2C",
+        "PWM",
+        "ADC",
+        "TIMER",
+        "RTC",
+        "USB_DEVICE",
+        "FLASH"
+    ],
+    "default_pins": {
+        "led": 25,
+        "uart_tx": 0,
+        "uart_rx": 1,
+        "i2c_sda": 4,
+        "i2c_scl": 5
+    }
+}

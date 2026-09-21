@@ -1,0 +1,45 @@
+{
+    "name": "esp32",
+    "display_name": "Espressif ESP32 (Dual Xtensa LX6)",
+    "architecture": "xtensa",
+    "cpu": "esp32-lx6",
+    "fpu": true,
+    "clock_mhz": 240,
+    "ram_bytes": 532480,
+    "flash_bytes": 4194304,
+    "profile": "advanced",
+    "toolchain": {
+        "prefix": "xtensa-esp32-elf-",
+        "compiler": "xtensa-esp32-elf-gcc",
+        "cflags": "-mlongcalls -O2 -ffunction-sections -fdata-sections -Wall",
+        "ldflags": "-T platforms/esp32/linker/esp32.ld -Wl,--gc-sections"
+    },
+    "output_format": "bin",
+    "flash_tool": "esptool.py",
+    "flash_args": "--chip esp32 --baud 460800 write_flash 0x0 {output_file}",
+    "capabilities": [
+        "GPIO",
+        "UART",
+        "SPI",
+        "I2C",
+        "PWM",
+        "ADC",
+        "DAC",
+        "TIMER",
+        "RTC",
+        "WIFI",
+        "BLUETOOTH",
+        "BLE",
+        "FLASH",
+        "CRYPTO_ACCEL",
+        "OTA",
+        "DEEP_SLEEP"
+    ],
+    "default_pins": {
+        "led": 2,
+        "uart_tx": 1,
+        "uart_rx": 3,
+        "i2c_sda": 21,
+        "i2c_scl": 22
+    }
+}

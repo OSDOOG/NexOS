@@ -1,0 +1,41 @@
+{
+    "name": "stm32",
+    "display_name": "STM32F4 Discovery / BlackPill (Cortex-M4)",
+    "architecture": "arm",
+    "cpu": "cortex-m4",
+    "fpu": true,
+    "clock_mhz": 100,
+    "ram_bytes": 131072,
+    "flash_bytes": 524288,
+    "profile": "advanced",
+    "toolchain": {
+        "prefix": "arm-none-eabi-",
+        "compiler": "arm-none-eabi-gcc",
+        "cflags": "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -O2 -ffunction-sections -fdata-sections -Wall",
+        "ldflags": "-T platforms/stm32/linker/stm32f4.ld -Wl,--gc-sections"
+    },
+    "output_format": "bin",
+    "flash_tool": "st-flash",
+    "flash_args": "write {output_file} 0x08000000",
+    "capabilities": [
+        "GPIO",
+        "UART",
+        "SPI",
+        "I2C",
+        "PWM",
+        "ADC",
+        "DAC",
+        "TIMER",
+        "RTC",
+        "USB_DEVICE",
+        "FLASH",
+        "DEEP_SLEEP"
+    ],
+    "default_pins": {
+        "led": 13,
+        "uart_tx": 2,
+        "uart_rx": 3,
+        "i2c_sda": 8,
+        "i2c_scl": 9
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "name": "esp32-s3",
+    "display_name": "Espressif ESP32-S3 (Dual Xtensa LX7 with Vector AI)",
+    "architecture": "xtensa",
+    "cpu": "esp32s3-lx7",
+    "fpu": true,
+    "clock_mhz": 240,
+    "ram_bytes": 524288,
+    "flash_bytes": 8388608,
+    "profile": "advanced",
+    "toolchain": {
+        "prefix": "xtensa-esp32s3-elf-",
+        "compiler": "xtensa-esp32s3-elf-gcc",
+        "cflags": "-mlongcalls -O2 -ffunction-sections -fdata-sections -Wall",
+        "ldflags": "-T platforms/esp32s3/linker/esp32s3.ld -Wl,--gc-sections"
+    },
+    "output_format": "bin",
+    "flash_tool": "esptool.py",
+    "flash_args": "--chip esp32s3 --baud 460800 write_flash 0x0 {output_file}",
+    "capabilities": [
+        "GPIO",
+        "UART",
+        "SPI",
+        "I2C",
+        "PWM",
+        "ADC",
+        "TIMER",
+        "RTC",
+        "WIFI",
+        "BLE",
+        "USB_DEVICE",
+        "USB_HOST",
+        "FLASH",
+        "CRYPTO_ACCEL",
+        "OTA",
+        "DEEP_SLEEP"
+    ],
+    "default_pins": {
+        "led": 38,
+        "uart_tx": 43,
+        "uart_rx": 44,
+        "i2c_sda": 1,
+        "i2c_scl": 2
+    }
+}

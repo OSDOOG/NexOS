@@ -1,0 +1,10 @@
+{
+    "name": "sensor_monitor",
+    "version": "1.0.0",
+    "author": "NexOS Team",
+    "description": "Dynamic hardware capability sensing and telemetry demonstration",
+    "required_capabilities": [],
+    "optional_capabilities": ["ADC", "WIFI", "DISPLAY"],
+    "source_files": ["main.c"],
+    "profiles": ["micro", "standard", "advanced"]
+}
